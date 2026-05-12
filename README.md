@@ -22,7 +22,7 @@ Trọng tâm:
 ### Thiết lập Wordpress: 
 Đi thiết lập Wp:
 <img width="973" height="478" alt="image" src="https://github.com/user-attachments/assets/cd525636-5e43-490f-93a8-3ff37ac79a76" />
-```
+.
 <img width="1862" height="957" alt="image" src="https://github.com/user-attachments/assets/27364719-829d-4346-9ae4-d83a5b396f05" />
 <img width="1887" height="922" alt="image" src="https://github.com/user-attachments/assets/ce69afcf-e919-40a6-8a86-3b06c49c5fc9" />
 
