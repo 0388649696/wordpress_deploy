@@ -28,12 +28,12 @@ Trọng tâm:
 
 
 ### ĐIỂM ĐỘT PHÁ:
-```
+
 | Tiêu chí | Nhận xét |
 |---|---|
 | Công sức | Rất thấp. Việc dùng Docker giúp triển khai 3 dịch vụ cùng lúc chỉ với 1 lệnh docker compose up. |
 | Độ khó | Dễ sử dụng giao diện web, nhưng đòi hỏi kiến thức về Network (như lỗi 502 bạn vừa sửa) để kết nối Cloudflare Tunnel. |
 | Tài nguyên | WordPress chạy trên PHP khá ngốn RAM (khoảng 200-400MB cho 1 dự án). Nếu chạy nhiều site trên 1 máy ảo yếu, RAM sẽ bị quá tải (Swapping). |
 | Tính tiện dụng | Rất cao cho việc tạo website nhanh, nhưng tốn công tối ưu bảo mật và tốc độ hơn so với code tay thuần túy. |
-```
+
 
