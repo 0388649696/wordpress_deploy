@@ -38,4 +38,9 @@ Trọng tâm:
 | Tính tiện dụng | Rất cao cho việc tạo website nhanh, nhưng tốn công tối ưu bảo mật và tốc độ hơn so với code tay thuần túy. |
 
 ## B. N8N 
+1. Tạo và cài n8n
+<img width="662" height="102" alt="Screenshot 2026-05-25 152227" src="https://github.com/user-attachments/assets/e1aef58a-4421-4c59-86a2-2441fa1ca710" />
+
+
+
 
