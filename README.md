@@ -38,9 +38,41 @@ Trọng tâm:
 | Tính tiện dụng | Rất cao cho việc tạo website nhanh, nhưng tốn công tối ưu bảo mật và tốc độ hơn so với code tay thuần túy. |
 
 ## B. N8N 
-1. Tạo và cài n8n
+### 1. Tạo và cài n8n
 <img width="662" height="102" alt="Screenshot 2026-05-25 152227" src="https://github.com/user-attachments/assets/e1aef58a-4421-4c59-86a2-2441fa1ca710" />
+ N8n yêu cầu ssl và https. Để không cần cài ssl. Có phương pháp cấu hình như sau:
+```
+n8n_wpanhtu:
+    image: n8nio/n8n:latest
+    restart: always
+    container_name: n8n_wpanhtu
+    ports:
+      - "5678:5678"
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - WEBHOOK_URL=https://n8nanhtu.divu.click/
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+```
+ - Mấu chốt ở - WEBHOOK_URL=https://n8nanhtu.divu.click/. Và Tunnel 
+ <img width="1406" height="717" alt="image" src="https://github.com/user-attachments/assets/41e4a001-da28-45cc-b0ee-91683206319c" />
+. Rồi tạo tk:
+<img width="657" height="844" alt="image" src="https://github.com/user-attachments/assets/9b36cc60-fe18-4fec-aeee-ddbe4a3387f9" />
 
 
+### Điểm quan trọng:
+Trong quá trình cấu hình gặp lỗi "Bad lock file is ignored: ./.docker-compose.yml.swp", đồng thời gây ra lỗi "Error establishing a database connection (Wordpress)" và n8n không truy cập được. Đây là cách xử lý:
+Nguyên nhân Ổ đĩa đầy (100%) 
+   │
+   ├──► Ubuntu không ghi được File tạm (.swp) ──► Docker Compose kẹt cú pháp
+   │
+   ├──► n8n Container ghi đè File Config lỗi ──► File config hỏng (Invalid JSON) ──► n8n Crash liên tục
+   │
+   └──► MariaDB không tạo được File Lock ────► Container sập (Exit code 1) ────► WordPress mất kết nối (Database Error)
++ Xử lý:
+1. Nâng dung lượng lên.
+2. Xóa cấu hình và thư mục n8n cũ
+<img width="695" height="381" alt="image" src="https://github.com/user-attachments/assets/9800e6e4-f7ed-4bc9-9bca-8623d5636379" />
 
 
+### 2. 
