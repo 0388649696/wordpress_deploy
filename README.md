@@ -1,5 +1,6 @@
 # Ứng dụng WP vào Docker để xây dựng website cùng với Mariadb kết nối Cloudflare
 
+## A. Wordpress
 Kịch bản: Máy đã có dự án cũ, tạo mới sao cho độc lập tránh chồng chéo.
 ## 1. Chuẩn bị:
 ### Dự án mới: 
@@ -36,4 +37,5 @@ Trọng tâm:
 | Tài nguyên | WordPress chạy trên PHP khá ngốn RAM (khoảng 200-400MB cho 1 dự án). Nếu chạy nhiều site trên 1 máy ảo yếu, RAM sẽ bị quá tải (Swapping). |
 | Tính tiện dụng | Rất cao cho việc tạo website nhanh, nhưng tốn công tối ưu bảo mật và tốc độ hơn so với code tay thuần túy. |
 
+## B. N8N 
 
