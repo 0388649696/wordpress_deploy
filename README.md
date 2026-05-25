@@ -75,4 +75,25 @@ Nguyên nhân Ổ đĩa đầy (100%)
 <img width="695" height="381" alt="image" src="https://github.com/user-attachments/assets/9800e6e4-f7ed-4bc9-9bca-8623d5636379" />
 
 
-### 2. 
+### 2. Tạo workflow:
+- Sau khi bấm vào "Sự kiện trên ứng dụng", một ô tìm kiếm sẽ hiện ra. Bạn gõ chữ Telegram và chọn Telegram Trigger.
+- Ở bảng cấu hình bên phải hiện ra tiếp theo, tại mục Event (Sự kiện), bạn chọn là On Message (Khi có tin nhắn đến).
+- Tại mục Credential, bấm vào nút **Set up credential**, chọn Create New Credential rồi dán chuỗi Access Token mà lấy từ @BotFather vào.
+<img width="570" height="640" alt="image" src="https://github.com/user-attachments/assets/bde86eec-741f-4bfd-a1b8-adbedc9f640b" />
+<img width="1342" height="695" alt="image" src="https://github.com/user-attachments/assets/c4d77dd7-16ab-4bb0-8a81-0306ea449db4" />
+
+```
+[Telegram Trigger] ──► [Google Gemini] ──► [Code JavaScript] ──► [WordPress Node]
+ (Nhận tin nhắn)        (Sinh bài viết JSON)   (Lọc & làm sạch dữ liệu)   (Đăng bài Publish)
+```
+Thêm node Gemini:
+<img width="1852" height="805" alt="image" src="https://github.com/user-attachments/assets/ff5da6c2-7ef9-45ea-bfe1-bedb5cb5ec19" />.
+- truy cập vào trang web: https://aistudio.google.com/ lấy key
+- Credential, bạn bấm vào ô lựa chọn và chọn Create New Credential. Điền Key.
+- Chọn Model
+- Prompt: {{ $json.message.text }}. Kết quả sinh ra ở định dạng HTML+CSS để tôi dùng HTML+CSS này tạo bài viết cho wordpress.
+- Bật Output Content as JSON
+- Bấm Execute step
+
+
+
