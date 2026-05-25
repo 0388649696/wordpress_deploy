@@ -95,5 +95,64 @@ Thêm node Gemini:
 - Bật Output Content as JSON
 - Bấm Execute step
 
+Thêm node Code:
+<img width="1857" height="822" alt="image" src="https://github.com/user-attachments/assets/8b1bb2b4-f2af-457a-9e2b-c3c0b0f5355c" />
+```
+// 1. Lấy chuỗi mã HTML thô từ node Gemini truyền sang
+let rawHtml = $input.first().json.content.parts[0].text;
+
+// Làm sạch các dấu nháy kép thừa ở đầu và cuối chuỗi nếu có
+if (rawHtml.startsWith('"') && rawHtml.endsWith('"')) {
+    rawHtml = rawHtml.substring(1, rawHtml.length - 1);
+}
+
+// 2. Tự động bóc tách Tiêu đề (Nằm giữa cặp thẻ <h1> và </h1>)
+let postTitle = "Bài viết tự động từ AI"; // Tiêu đề mặc định nếu lỗi
+const titleMatch = rawHtml.match(/<h1>(.*?)<\/h1>/);
+if (titleMatch && titleMatch[1]) {
+    postTitle = titleMatch[1].replace(/\\"/g, '"').trim();
+}
+
+// 3. Tự động bóc tách Nội dung (Lấy phần style và nội dung chính)
+let postContent = rawHtml;
+const bodyMatch = rawHtml.match(/<body>([\s\S]*?)<\/body>/);
+const styleMatch = rawHtml.match(/<style>([\s\S]*?)<\/style>/);
+
+if (bodyMatch && bodyMatch[1]) {
+    // Kết hợp phần Style và phần Body để WordPress hiển thị đẹp mắt
+    let styleTag = styleMatch ? `<style>${styleMatch[1]}</style>` : '';
+    postContent = styleTag + bodyMatch[1];
+}
+
+// Làm sạch các ký tự xuống dòng (\\n) và dấu gạch chéo ngược (\\") do JSON sinh ra
+postContent = postContent.replace(/\\n/g, '\n').replace(/\\"/g, '"').trim();
+
+// 4. Trả kết quả chuẩn về cho Node WordPress sử dụng
+return {
+  title: postTitle,
+  content: postContent
+};
+```
+
+Tạo MẬT KHẨU ứng dụng. Để điền vào dưới
+<img width="1652" height="548" alt="image" src="https://github.com/user-attachments/assets/cd8b60ad-373b-4c5b-a078-9e8edd37eab5" />
+ymhI TKCF e0Xt VHCc tfj2 QqYK
+
+Thêm node Wordpress:
+<img width="1345" height="708" alt="image" src="https://github.com/user-attachments/assets/e804406b-8610-4af5-953b-e8ba6e3d1932" />
+- Bật Ignore SSL Issues
+
+### CHẠY FLOW:
+Chạy từng node bằng cách Execute step
+Nếu lỗi, sửa:
+Tại nano /home/wpanhtu/wp_data/wp-config.php
+define('WP_ENVIRONMENT_TYPE', 'local');
+<img width="1089" height="76" alt="image" src="https://github.com/user-attachments/assets/bb2b1dd2-e432-48af-aa0c-7575a8b22a54" />
+Done:
+<img width="1873" height="818" alt="image" src="https://github.com/user-attachments/assets/bb690b57-371f-4293-8ae3-0c6a2a2597d7" />
+
+Xong:
+<img width="1901" height="901" alt="image" src="https://github.com/user-attachments/assets/d842765b-df2d-4e4f-8b9a-6f692d04a7f5" />
+
 
 
